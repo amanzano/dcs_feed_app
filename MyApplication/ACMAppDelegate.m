@@ -7,6 +7,12 @@
 //
 
 #import "ACMAppDelegate.h"
+#import "ACMShareKitConfigurator.h"
+#import "SHKConfiguration.h"
+
+#import "ACMFeedViewController.h"
+
+#import "ACMFetcher.h"
 
 @implementation ACMAppDelegate
 
@@ -15,6 +21,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    //ShareKit submodule with app specific configuration
+    DefaultSHKConfigurator *configurator = [[ACMShareKitConfigurator alloc] init];
+    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
+    
+    ACMFeedViewController *viewController1 = [[ACMFeedViewController alloc] initWithType:PageType_INSTAGRAM];
+    ACMFeedViewController *viewController2 = [[ACMFeedViewController alloc] initWithType:PageType_NEWSFEED];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController1];
+    UINavigationController *navController2 = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:navController, navController2, nil];
+    self.window.rootViewController = tabBarController;
+
     [self.window makeKeyAndVisible];
     return YES;
 }
