@@ -36,20 +36,6 @@
 	[SHK setRootViewController:vc];
 	[actionSheet showInView:vc.view];
 }
-//
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//    self.caption.autoresizingMask = UIViewAutoresizingNone;
-//    self.caption.numberOfLines = 0;
-//    CGRect cellFrame = self.caption.frame;
-//    cellFrame.size = [self sizeOfLabel:self.caption withText:self.caption.text];
-//    self.caption.frame =  cellFrame;
-//}
-//
-//- (CGSize)sizeOfLabel:(UILabel *)label withText:(NSString *)text {
-//    return [text boundingRectWithSize:CGSizeMake(280, CGFLOAT_MAX) options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName:label.font} context: nil].size;
-//}
 
 + (CGFloat)heightForRowWithData:(NSDictionary *)data forType:(PageType)type
 {
